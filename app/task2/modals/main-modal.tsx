@@ -25,7 +25,7 @@ export const Modal = ({ title, children, onClose }: ModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-opacity-30 z-[50]"
+      className="fixed inset-0 flex items-center justify-center bg-black/50 z-100"
       onClick={handleBackdropClick}
     >
       <div

@@ -1,12 +1,36 @@
 import { useState } from "react";
 import { Modal } from "./main-modal";
 
-export const CreateTodoModal = ({ onClose }: { onClose: () => void }) => {
+export const CreateTodoModal = ({
+  onClose,
+  onTodoCreated,
+}: {
+  onClose: () => void;
+  onTodoCreated?: () => void;
+}) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const todos = JSON.parse(localStorage.getItem("todos") || "[]");
 
   const handleCreateTodo = () => {
-    localStorage.setItem("todo", JSON.stringify({ title, description }));
+    const newTodo = {
+      id: todos.length + 1,
+      title,
+      description,
+      completed: false,
+    };
+
+    const existingTodos = JSON.parse(localStorage.getItem("todos") || "[]");
+
+    const updatedTodos = [...existingTodos, newTodo];
+
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
+
+    if (onTodoCreated) {
+      onTodoCreated();
+    }
+
+    onClose();
   };
 
   const handleCancel = () => {
