@@ -51,6 +51,12 @@ export default function Counter() {
           +1
         </button>
         <button
+          className="border-2 border-black rounded-lg px-4 py-2 cursor-pointer hover:bg-gray-100 transition-colors"
+          onClick={handleReset}
+        >
+          Reset
+        </button>
+        <button
           className={`border-2 border-black rounded-lg px-4 py-2 transition-colors ${
             count === 0
               ? "cursor-not-allowed opacity-50 bg-gray-200"
@@ -60,12 +66,6 @@ export default function Counter() {
           disabled={count === 0}
         >
           -1
-        </button>
-        <button
-          className="border-2 border-black rounded-lg px-4 py-2 cursor-pointer hover:bg-gray-100 transition-colors"
-          onClick={handleReset}
-        >
-          Reset
         </button>
       </div>
       <div className="text-sm text-gray-600 mt-4">
